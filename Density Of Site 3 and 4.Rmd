@@ -1,0 +1,51 @@
+---
+title: "Density"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(leaflet)
+library(markdown)
+library(dplyr)
+```
+
+
+
+```{r cars}
+site3 <- read_csv("site3.csv")
+```
+
+```{r pressure, echo=FALSE}
+site4 <- read_csv("site4.csv")
+```
+
+
+```{r}
+shrubcover3 = site3$shrub_cov
+quantile(shrubcover3)
+shrubcover4 = site4$shrub_cov
+quantile(shrubcover4)
+```
+```{r}
+Site_3 <- leaflet()%>%
+  addTiles()%>%
+  addMarkers(lng = -119.6656, lat = 35.15471, popup = "High Density Site 3") %>%
+  addMarkers(lng = -119.6696, lat = 35.15625, popup = "Medium Density Site 3") %>%
+  addMarkers(lng = -119.6663, lat = 35.15524, popup = "Low Density Site 3") %>%
+  addMarkers(lng = -119.6688, lat = 35.15122, popup = "No Density Site 3")
+Site_3
+```
+
+```{r}
+Site_4 <- leaflet()%>%
+  addTiles()%>%
+  addMarkers(lng = -119.6368, lat = 35.11521, popup = "High Density Site 4") %>%
+  addMarkers(lng = -119.6301, lat = 35.11297, popup = "Medium Density Site 4") %>%
+  addMarkers(lng = -119.6360, lat = 35.11794, popup = "Low Density Site 4") %>%
+  addMarkers(lng = -119.6210, lat = 35.10871, popup = "No Density Site 4")
+Site_4
+
+```
+
